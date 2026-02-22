@@ -6,13 +6,13 @@ const NAV_LINKS = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll();
+  const progress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
     const unsub = scrollYProgress.on("change", (v) => setScrolled(v > 0.02));
@@ -21,8 +21,14 @@ export const Navbar = () => {
 
   return (
     <>
+      <motion.div
+        className="fixed top-0 left-0 h-px z-[100]"
+        style={{
+          width: progress,
+          background: "linear-gradient(90deg, hsl(262 83% 65%), hsl(185 100% 50%))",
+        }}
+      />
 
-      {/* Nav */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

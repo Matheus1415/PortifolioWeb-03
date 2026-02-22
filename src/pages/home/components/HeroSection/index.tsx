@@ -139,8 +139,8 @@ export const HeroSection = () => {
           className="flex items-center justify-center gap-8 md:gap-24 mt-20 md:mt-24"
         >
           {[
-            { n: "1+", label: "Anos de código" },
-            { n: "20+", label: "Projetos feitos" },
+            { n: "2+", label: "Anos de código" },
+            { n: "7+", label: "Projetos feitos" },
             { n: "∞", label: "Cafés/Processos" },
           ].map(({ n, label }) => (
             <div key={label} className="text-center group cursor-default">
