@@ -12,12 +12,12 @@ export const projects = [
       "Arquitetura baseada em Componentes Atômicos para reusabilidade.",
       "Sistema de filtragem dinâmica utilizando estados complexos do React.",
       "Estilização modular com Sass para manutenção isolada de componentes.",
-      "Tipagem estrita com TypeScript para prevenir erros em tempo de execução."
+      "Tipagem estrita com TypeScript para prevenir erros em tempo de execução.",
     ],
     learnings: [
       "Otimização de performance em aplicações com renderização de listas longas.",
       "Implementação de padrões de design para layouts Mobile-First.",
-      "Gerenciamento de ativos estáticos de alta qualidade sem comprometer o LCP."
+      "Gerenciamento de ativos estáticos de alta qualidade sem comprometer o LCP.",
     ],
     tech: ["React", "TypeScript", "Sass"],
   },
@@ -34,12 +34,12 @@ export const projects = [
       "Integração com mapas e serviços de geolocalização nativos.",
       "Consumo de API para validação dinâmica de QR Codes.",
       "Gerenciamento de navegação complexa com React Navigation.",
-      "Uso de Expo para acesso a APIs nativas de câmera e localização."
+      "Uso de Expo para acesso a APIs nativas de câmera e localização.",
     ],
     learnings: [
       "Resolução de problemas de latência em serviços de mapas mobile.",
       "Experiência de usuário (UX) em fluxos de validação física (O2O - Online to Offline).",
-      "Ciclo de vida de aplicações mobile e gerenciamento de permissões."
+      "Ciclo de vida de aplicações mobile e gerenciamento de permissões.",
     ],
     tech: ["React Native", "Expo", "TS"],
   },
@@ -56,12 +56,12 @@ export const projects = [
       "Desenvolvimento de API REST seguindo os princípios de maturidade Richardson.",
       "Autenticação e Autorização baseada em tokens JWT/Sanctum.",
       "Modelagem de banco de dados relacional complexo (Muitos-para-Muitos).",
-      "Implementação de Policy-based Authorization para níveis de acesso."
+      "Implementação de Policy-based Authorization para níveis de acesso.",
     ],
     learnings: [
       "Segurança de dados sensíveis e sanitização de inputs em PHP/Laravel.",
       "Otimização de queries SQL para evitar o problema de N+1 queries.",
-      "Documentação de endpoints para consumo por múltiplos frontends."
+      "Documentação de endpoints para consumo por múltiplos frontends.",
     ],
     tech: ["Laravel", "MySQL", "PHP"],
   },
@@ -78,12 +78,12 @@ export const projects = [
       "SPA-like experience utilizando Laravel Livewire para reatividade server-side.",
       "Integração de sistema de pagamentos ou fluxos de patrocínio.",
       "Validação de dados em tempo real sem recarregamento de página.",
-      "Arquitetura baseada em MVC (Model-View-Controller) robusta."
+      "Arquitetura baseada em MVC (Model-View-Controller) robusta.",
     ],
     learnings: [
       "Sincronização de estados entre frontend e backend de forma transparente.",
       "UX para plataformas de crowdfunding e engajamento de usuários.",
-      "Deploy e escalabilidade de aplicações PHP modernas."
+      "Deploy e escalabilidade de aplicações PHP modernas.",
     ],
     tech: ["Laravel", "Livewire", "MySQL"],
   },
@@ -100,12 +100,12 @@ export const projects = [
       "Algoritmo customizado para cálculo de probabilidades genéticas.",
       "Interface construída com Chakra UI focando em acessibilidade (A11y).",
       "Visualização de dados interativa para simulação de cruzamentos.",
-      "Gerenciamento de estado global para persistência de progresso de estudo."
+      "Gerenciamento de estado global para persistência de progresso de estudo.",
     ],
     learnings: [
       "Liderança técnica e tomada de decisão arquitetural em projetos educacionais.",
       "Como transformar lógica científica densa em interfaces lúdicas.",
-      "Design Systems e consistência visual em ferramentas de aprendizado."
+      "Design Systems e consistência visual em ferramentas de aprendizado.",
     ],
     tech: ["React", "Chakra UI", "JS"],
   },
@@ -122,12 +122,12 @@ export const projects = [
       "Stack moderna com Node.js no backend e React no frontend.",
       "Uso de Docker para containerização e consistência ambiental.",
       "Persistência de dados com PostgreSQL e Drizzle ORM.",
-      "Integração de progresso visual via componentes de barra de progresso customizados."
+      "Integração de progresso visual via componentes de barra de progresso customizados.",
     ],
     learnings: [
       "Implementação de fluxos Fullstack ponta a ponta.",
       "Conceitos de containerização para ambientes de desenvolvimento e produção.",
-      "Persistência de dados e migrações de esquema em bancos relacionais."
+      "Persistência de dados e migrações de esquema em bancos relacionais.",
     ],
     tech: ["Node.js", "React", "Docker"],
   },
@@ -144,12 +144,12 @@ export const projects = [
       "Interface imersiva com animações CSS complexas e Sass.",
       "Otimização de imagens e carregamento sob demanda para grandes ativos visuais.",
       "Navegação fluida baseada em rotas dinâmicas.",
-      "Uso de TypeScript para garantir que dados de 'planetas' sejam imutáveis."
+      "Uso de TypeScript para garantir que dados de 'planetas' sejam imutáveis.",
     ],
     learnings: [
       "Técnicas avançadas de UI para criar experiências imersivas.",
       "Manipulação de layouts complexos mantendo a responsividade.",
-      "Uso criativo de gradientes e efeitos de vidro (Glassmorphism)."
+      "Uso criativo de gradientes e efeitos de vidro (Glassmorphism).",
     ],
     tech: ["React", "TypeScript", "Sass"],
   },
@@ -166,13 +166,42 @@ export const projects = [
       "Integração com Gemini API para análise e explicação de payloads JSON.",
       "Backend de alta performance com Fastify para captura de requisições.",
       "Websockets para atualização em tempo real da interface quando um webhook chega.",
-      "Sistema de replay de requisições para facilitar o debugging local."
+      "Sistema de replay de requisições para facilitar o debugging local.",
     ],
     learnings: [
       "Engenharia de Prompt para extrair insights úteis de payloads técnicos.",
       "Arquitetura baseada em eventos (Event-driven) no Node.js.",
-      "Trabalho com segurança e CORS em endpoints públicos que recebem webhooks."
+      "Trabalho com segurança e CORS em endpoints públicos que recebem webhooks.",
     ],
     tech: ["Node.js", "Fastify", "Gemini", "React"],
+  },
+  {
+    id: "09",
+    title: "PDV (SaaS) - reelancer",
+    status: "FULLSTACK / SAAS",
+    statusColor: "#0ea5e9",
+    bg: "linear-gradient(135deg, #0c4a6e 0%, #020617 100%)",
+    github: null,
+    demo: null,
+    desc: "Ecossistema SaaS completo para gestão de vendas e inventário multi-empresa, com controle de acesso granular e processamento de pagamentos em tempo real.",
+    technicalDetails: [
+      "Arquitetura baseada em Layer Service (Slayer) no Laravel para isolamento de regras de negócio.",
+      "Implementação de Event-Driven architecture para disparos de notificações, logs e atualizações de estoque.",
+      "Sistema de RBAC (Role-Based Access Control) com níveis: Admins, Gerentes e Caixas.",
+      "Infraestrutura SaaS (Multi-tenancy) permitindo isolamento total de dados entre diferentes empresas.",
+      "Desenvolvimento orientado a GitFlow para garantir estabilidade e versionamento rigoroso de releases.",
+    ],
+    learnings: [
+      "Domínio de fluxos financeiros complexos e concorrência em transações de estoque.",
+      "Implementação de UX progressiva com guias interativos (Tutorial System) integrados às páginas do cliente.",
+      "Gerenciamento de subcategorias dinâmicas e árvores de produtos escaláveis.",
+      "Integração de gateways de pagamento e reconciliação bancária automatizada.",
+    ],
+    tech: ["React", "TypeScript", "Laravel", "PHP", "MySQL"],
+    metrics: {
+      architecture: "Layer Service",
+      pattern: "Event-Driven",
+      workflow: "GitFlow",
+    },
   },
 ];

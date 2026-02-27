@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { Cpu, ExternalLink, Github, Lightbulb, X } from "lucide-react";
 import { projects } from "@/data/project";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type Project = (typeof projects)[number];
 
@@ -195,120 +196,122 @@ export const ProjectsSection = () => {
               onClick={(event) => event.stopPropagation()}
               className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-zinc-950 shadow-[0_0_100px_rgba(0,0,0,1)] scrollbar-hide"
             >
-              <div
-                className="absolute inset-0 h-64 opacity-20 blur-3xl pointer-events-none"
-                style={{ background: selectedProject.bg }}
-              />
+              <ScrollArea className="h-[750px]">
+                <div
+                  className="absolute inset-0 h-64 opacity-20 blur-3xl pointer-events-none"
+                  style={{ background: selectedProject.bg }}
+                />
 
-              <div className="relative p-6 md:p-10 space-y-8">
-                {/* Header */}
-                <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-[10px] tracking-[0.4em] text-zinc-500 uppercase">
-                        Case_Study_{selectedProject.id}
-                      </span>
-                      <span
-                        className="rounded-full border px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider"
-                        style={{
-                          color: selectedProject.statusColor,
-                          borderColor: `${selectedProject.statusColor}40`,
-                          backgroundColor: `${selectedProject.statusColor}10`,
-                        }}
-                      >
-                        {selectedProject.status}
-                      </span>
+                <div className="relative p-6 md:p-10 space-y-8">
+                  {/* Header */}
+                  <div className="flex justify-between items-start">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] tracking-[0.4em] text-zinc-500 uppercase">
+                          Case_Study_{selectedProject.id}
+                        </span>
+                        <span
+                          className="rounded-full border px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider"
+                          style={{
+                            color: selectedProject.statusColor,
+                            borderColor: `${selectedProject.statusColor}40`,
+                            backgroundColor: `${selectedProject.statusColor}10`,
+                          }}
+                        >
+                          {selectedProject.status}
+                        </span>
+                      </div>
+                      <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
+                        {selectedProject.title}
+                      </h3>
                     </div>
-                    <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
-                      {selectedProject.title}
-                    </h3>
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className="group p-2 rounded-full border border-white/10 bg-white/5 text-zinc-400 hover:text-white transition-colors"
+                    >
+                      <X size={20} className="group-hover:rotate-90 transition-transform" />
+                    </button>
                   </div>
-                  <button
-                    onClick={() => setSelectedProject(null)}
-                    className="group p-2 rounded-full border border-white/10 bg-white/5 text-zinc-400 hover:text-white transition-colors"
-                  >
-                    <X size={20} className="group-hover:rotate-90 transition-transform" />
-                  </button>
-                </div>
 
-                <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
-                  {selectedProject.desc}
-                </p>
+                  <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
+                    {selectedProject.desc}
+                  </p>
 
-                {/* Grid de Detalhes Técnicos e Aprendizados */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  
-                  <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                    <div className="flex items-center gap-2 text-cyan-400">
-                      <Cpu size={18} />
-                      <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Engenharia</h4>
+                  {/* Grid de Detalhes Técnicos e Aprendizados */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <Cpu size={18} />
+                        <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Engenharia</h4>
+                      </div>
+                      <ul className="space-y-3">
+                        {selectedProject.technicalDetails.map((detail, i) => (
+                          <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
+                            <span className="text-cyan-500/50 mt-1">▹</span>
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-3">
-                      {selectedProject.technicalDetails.map((detail, i) => (
-                        <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
-                          <span className="text-cyan-500/50 mt-1">▹</span>
-                          {detail}
-                        </li>
+
+                    {/* Learnings */}
+                    <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+                      <div className="flex items-center gap-2 text-purple-400">
+                        <Lightbulb size={18} />
+                        <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Aprendizados</h4>
+                      </div>
+                      <ul className="space-y-3">
+                        {selectedProject.learnings.map((learning, i) => (
+                          <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
+                            <span className="text-purple-500/50 mt-1">check_</span>
+                            {learning}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Stack & Actions */}
+                  <div className="pt-6 border-t border-white/5 space-y-6">
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-lg bg-zinc-900 border border-white/10 text-zinc-400 font-mono text-[10px]"
+                        >
+                          {tech}
+                        </span>
                       ))}
-                    </ul>
-                  </div>
-
-                  {/* Learnings */}
-                  <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                    <div className="flex items-center gap-2 text-purple-400">
-                      <Lightbulb size={18} />
-                      <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Aprendizados</h4>
                     </div>
-                    <ul className="space-y-3">
-                      {selectedProject.learnings.map((learning, i) => (
-                        <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
-                          <span className="text-purple-500/50 mt-1">check_</span>
-                          {learning}
-                        </li>
-                      ))}
-                    </ul>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      {selectedProject.github && (
+                        <a
+                          href={selectedProject.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200"
+                        >
+                          <Github size={18} /> REPOSITÓRIO NO GITHUB
+                        </a>
+                      )}
+
+                      {selectedProject.demo && (
+                        <a
+                          href={selectedProject.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-white/10"
+                        >
+                          <ExternalLink size={18} />
+                          {selectedProject.demo.includes("figma.com") ? "PROTÓTIPO" : "VISUALIZAR PROJETO"}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-
-                {/* Stack & Actions */}
-                <div className="pt-6 border-t border-white/5 space-y-6">
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 rounded-lg bg-zinc-900 border border-white/10 text-zinc-400 font-mono text-[10px]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    {selectedProject.github && (
-                      <a
-                        href={selectedProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200"
-                      >
-                        <Github size={18} /> REPOSITÓRIO NO GITHUB
-                      </a>
-                    )}
-
-                    {selectedProject.demo && (
-                      <a
-                        href={selectedProject.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-white/10"
-                      >
-                        <ExternalLink size={18} />
-                        {selectedProject.demo.includes("figma.com") ? "PROTÓTIPO" : "VISUALIZAR PROJETO"}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+              </ScrollArea>
             </motion.article>
           </motion.div>
         )}
