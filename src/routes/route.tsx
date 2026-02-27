@@ -1,4 +1,5 @@
 import Home from "@/pages/home";
+import NotFound from "@/pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 export function Router() {
@@ -6,6 +7,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

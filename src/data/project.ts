@@ -1,0 +1,178 @@
+export const projects = [
+  {
+    id: "01",
+    title: "Restaurant Web App",
+    status: "LIVE",
+    statusColor: "#10b981",
+    bg: "linear-gradient(135deg, #1e1b4b 0%, #064e3b 100%)",
+    github: "https://github.com/Matheus1415/restaurante",
+    demo: null,
+    desc: "Plataforma interativa para exploração de cardápios com filtros avançados e interface responsiva.",
+    technicalDetails: [
+      "Arquitetura baseada em Componentes Atômicos para reusabilidade.",
+      "Sistema de filtragem dinâmica utilizando estados complexos do React.",
+      "Estilização modular com Sass para manutenção isolada de componentes.",
+      "Tipagem estrita com TypeScript para prevenir erros em tempo de execução."
+    ],
+    learnings: [
+      "Otimização de performance em aplicações com renderização de listas longas.",
+      "Implementação de padrões de design para layouts Mobile-First.",
+      "Gerenciamento de ativos estáticos de alta qualidade sem comprometer o LCP."
+    ],
+    tech: ["React", "TypeScript", "Sass"],
+  },
+  {
+    id: "02",
+    title: "NearbyApp",
+    status: "MOBILE",
+    statusColor: "#06b6d4",
+    bg: "linear-gradient(135deg, #083344 0%, #1e1b4b 100%)",
+    github: "https://github.com/Matheus1415/NearbyApp",
+    demo: "https://www.figma.com/community/file/1448070647757721748",
+    desc: "App mobile para localização de comércios locais e resgate de cupons via QR Code.",
+    technicalDetails: [
+      "Integração com mapas e serviços de geolocalização nativos.",
+      "Consumo de API para validação dinâmica de QR Codes.",
+      "Gerenciamento de navegação complexa com React Navigation.",
+      "Uso de Expo para acesso a APIs nativas de câmera e localização."
+    ],
+    learnings: [
+      "Resolução de problemas de latência em serviços de mapas mobile.",
+      "Experiência de usuário (UX) em fluxos de validação física (O2O - Online to Offline).",
+      "Ciclo de vida de aplicações mobile e gerenciamento de permissões."
+    ],
+    tech: ["React Native", "Expo", "TS"],
+  },
+  {
+    id: "03",
+    title: "Tech Innovation Hub",
+    status: "BACKEND",
+    statusColor: "#f43f5e",
+    bg: "linear-gradient(135deg, #450a0a 0%, #1e1b4b 100%)",
+    github: "https://github.com/Matheus1415/TechInnovationHub",
+    demo: null,
+    desc: "API RESTful robusta para gestão de startups e investimentos com autenticação segura.",
+    technicalDetails: [
+      "Desenvolvimento de API REST seguindo os princípios de maturidade Richardson.",
+      "Autenticação e Autorização baseada em tokens JWT/Sanctum.",
+      "Modelagem de banco de dados relacional complexo (Muitos-para-Muitos).",
+      "Implementação de Policy-based Authorization para níveis de acesso."
+    ],
+    learnings: [
+      "Segurança de dados sensíveis e sanitização de inputs em PHP/Laravel.",
+      "Otimização de queries SQL para evitar o problema de N+1 queries.",
+      "Documentação de endpoints para consumo por múltiplos frontends."
+    ],
+    tech: ["Laravel", "MySQL", "PHP"],
+  },
+  {
+    id: "04",
+    title: "FreelanceHours",
+    status: "PROD",
+    statusColor: "#fbbf24",
+    bg: "linear-gradient(135deg, #422006 0%, #171717 100%)",
+    github: "https://github.com/Matheus1415/FreelanceHours",
+    demo: "https://www.figma.com/community/file/1425095508121835225",
+    desc: "Plataforma full-stack conectando criadores a patrocinadores para viabilizar projetos.",
+    technicalDetails: [
+      "SPA-like experience utilizando Laravel Livewire para reatividade server-side.",
+      "Integração de sistema de pagamentos ou fluxos de patrocínio.",
+      "Validação de dados em tempo real sem recarregamento de página.",
+      "Arquitetura baseada em MVC (Model-View-Controller) robusta."
+    ],
+    learnings: [
+      "Sincronização de estados entre frontend e backend de forma transparente.",
+      "UX para plataformas de crowdfunding e engajamento de usuários.",
+      "Deploy e escalabilidade de aplicações PHP modernas."
+    ],
+    tech: ["Laravel", "Livewire", "MySQL"],
+  },
+  {
+    id: "05",
+    title: "Mendel",
+    status: "TECH LEAD",
+    statusColor: "#a855f7",
+    bg: "linear-gradient(135deg, #2e1065 0%, #0f172a 100%)",
+    github: "https://github.com/Matheus1415/Mendel",
+    demo: "https://mendel-legacy.netlify.app/",
+    desc: "Plataforma interativa de educação genética com foco em UX e aprendizagem prática.",
+    technicalDetails: [
+      "Algoritmo customizado para cálculo de probabilidades genéticas.",
+      "Interface construída com Chakra UI focando em acessibilidade (A11y).",
+      "Visualização de dados interativa para simulação de cruzamentos.",
+      "Gerenciamento de estado global para persistência de progresso de estudo."
+    ],
+    learnings: [
+      "Liderança técnica e tomada de decisão arquitetural em projetos educacionais.",
+      "Como transformar lógica científica densa em interfaces lúdicas.",
+      "Design Systems e consistência visual em ferramentas de aprendizado."
+    ],
+    tech: ["React", "Chakra UI", "JS"],
+  },
+  {
+    id: "06",
+    title: "in.orbit",
+    status: "FULLSTACK",
+    statusColor: "#22d3ee",
+    bg: "linear-gradient(135deg, #164e63 0%, #020617 100%)",
+    github: "https://github.com/Matheus1415/NLWPocketJS",
+    demo: null,
+    desc: "Sistema full-stack de metas semanais com visualização de progresso em tempo real.",
+    technicalDetails: [
+      "Stack moderna com Node.js no backend e React no frontend.",
+      "Uso de Docker para containerização e consistência ambiental.",
+      "Persistência de dados com PostgreSQL e Drizzle ORM.",
+      "Integração de progresso visual via componentes de barra de progresso customizados."
+    ],
+    learnings: [
+      "Implementação de fluxos Fullstack ponta a ponta.",
+      "Conceitos de containerização para ambientes de desenvolvimento e produção.",
+      "Persistência de dados e migrações de esquema em bancos relacionais."
+    ],
+    tech: ["Node.js", "React", "Docker"],
+  },
+  {
+    id: "07",
+    title: "Space Explorer",
+    status: "UI/UX",
+    statusColor: "#6366f1",
+    bg: "linear-gradient(135deg, #312e81 0%, #1e1b4b 100%)",
+    github: "https://github.com/Matheus1415/siteEspacial",
+    demo: null,
+    desc: "Exploração visual do universo com filtros dinâmicos e design imersivo.",
+    technicalDetails: [
+      "Interface imersiva com animações CSS complexas e Sass.",
+      "Otimização de imagens e carregamento sob demanda para grandes ativos visuais.",
+      "Navegação fluida baseada em rotas dinâmicas.",
+      "Uso de TypeScript para garantir que dados de 'planetas' sejam imutáveis."
+    ],
+    learnings: [
+      "Técnicas avançadas de UI para criar experiências imersivas.",
+      "Manipulação de layouts complexos mantendo a responsividade.",
+      "Uso criativo de gradientes e efeitos de vidro (Glassmorphism)."
+    ],
+    tech: ["React", "TypeScript", "Sass"],
+  },
+  {
+    id: "08",
+    title: "Webhook Inspector (AI)",
+    status: "FULLSTACK",
+    statusColor: "#f59e0b",
+    bg: "linear-gradient(135deg, #451a03 0%, #1e1b4b 100%)",
+    github: "https://github.com/Matheus1415/Webhooks-Inspector",
+    demo: null,
+    desc: "Captura, inspeção e replicação de webhooks em tempo real com análise inteligente de payloads via IA.",
+    technicalDetails: [
+      "Integração com Gemini API para análise e explicação de payloads JSON.",
+      "Backend de alta performance com Fastify para captura de requisições.",
+      "Websockets para atualização em tempo real da interface quando um webhook chega.",
+      "Sistema de replay de requisições para facilitar o debugging local."
+    ],
+    learnings: [
+      "Engenharia de Prompt para extrair insights úteis de payloads técnicos.",
+      "Arquitetura baseada em eventos (Event-driven) no Node.js.",
+      "Trabalho com segurança e CORS em endpoints públicos que recebem webhooks."
+    ],
+    tech: ["Node.js", "Fastify", "Gemini", "React"],
+  },
+];

@@ -1,103 +1,29 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, Layers } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { Cpu, ExternalLink, Github, Lightbulb, X } from "lucide-react";
+import { projects } from "@/data/project";
 
-const PROJECTS = [
-  {
-    id: "01",
-    title: "Restaurant Web App",
-    desc: "Aplicação interativa para exploração de cardápios com filtros avançados e interface responsiva.",
-    tech: ["React", "TypeScript", "Sass"],
-    status: "LIVE",
-    statusColor: "#10b981",
-    bg: "linear-gradient(135deg, #1e1b4b 0%, #064e3b 100%)",
-    github: "https://github.com/Matheus1415/restaurante",
-    demo: null
-  },
-  {
-    id: "02",
-    title: "NearbyApp",
-    desc: "App mobile para localização de comércios locais e resgate de cupons via QR Code.",
-    tech: ["React Native", "Expo", "TS"],
-    status: "MOBILE",
-    statusColor: "#06b6d4",
-    bg: "linear-gradient(135deg, #083344 0%, #1e1b4b 100%)",
-    github: "https://github.com/Matheus1415/NearbyApp",
-    demo: "https://www.figma.com/community/file/1448070647757721748"
-  },
-  {
-    id: "03",
-    title: "Tech Innovation Hub",
-    desc: "API RESTful robusta para gestão de startups e investimentos com autenticação segura.",
-    tech: ["Laravel", "MySQL", "PHP"],
-    status: "BACKEND",
-    statusColor: "#f43f5e",
-    bg: "linear-gradient(135deg, #450a0a 0%, #1e1b4b 100%)",
-    github: "https://github.com/Matheus1415/TechInnovationHub",
-    demo: null
-  },
-  {
-    id: "04",
-    title: "FreelanceHours",
-    desc: "Plataforma full-stack conectando criadores a patrocinadores para viabilizar projetos.",
-    tech: ["Laravel", "Livewire", "MySQL"],
-    status: "PROD",
-    statusColor: "#fbbf24",
-    bg: "linear-gradient(135deg, #422006 0%, #171717 100%)",
-    github: "https://github.com/Matheus1415/FreelanceHours",
-    demo: "https://www.figma.com/community/file/1425095508121835225"
-  },
-  {
-    id: "05",
-    title: "Mendel",
-    desc: "Plataforma interativa de educação genética com foco em UX e aprendizagem prática.",
-    tech: ["React", "Chakra UI", "JS"],
-    status: "TECH LEAD",
-    statusColor: "#a855f7",
-    bg: "linear-gradient(135deg, #2e1065 0%, #0f172a 100%)",
-    github: "https://github.com/Matheus1415/Mendel",
-    demo: "https://mendel-legacy.netlify.app/"
-  },
-  {
-    id: "06",
-    title: "in.orbit",
-    desc: "Sistema full-stack de metas semanais com visualização de progresso em tempo real.",
-    tech: ["Node.js", "React", "Docker"],
-    status: "FULLSTACK",
-    statusColor: "#22d3ee",
-    bg: "linear-gradient(135deg, #164e63 0%, #020617 100%)",
-    github: "https://github.com/Matheus1415/NLWPocketJS",
-    demo: null
-  },
-  {
-    id: "07",
-    title: "Space Explorer",
-    desc: "Exploração visual do universo com filtros dinâmicos e design imersivo.",
-    tech: ["React", "TypeScript", "Sass"],
-    status: "UI/UX",
-    statusColor: "#6366f1",
-    bg: "linear-gradient(135deg, #312e81 0%, #1e1b4b 100%)",
-    github: "https://github.com/Matheus1415/siteEspacial",
-    demo: null
-  },
-  {
-    id: "08",
-    title: "Webhook Inspector (AI)",
-    desc: "Estação de trabalho para capturar, inspecionar e replicar webhooks em tempo real com análise inteligente de payloads.",
-    tech: ["Node.js", "Fastify", "OpenAI", "React"],
-    status: "FULLSTACK",
-    statusColor: "#f59e0b",
-    bg: "linear-gradient(135deg, #451a03 0%, #1e1b4b 100%)",
-    github: "https://github.com/Matheus1415/Webhooks-Inspector",
-    demo: null
-  },
-];
+type Project = (typeof projects)[number];
 
-const ProjectCard = ({ project }: { project: typeof PROJECTS[0] }) => {
+const ProjectCard = ({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: (project: Project) => void;
+}) => {
   return (
     <motion.div
-      className="group relative flex-shrink-0 w-[350px] md:w-[400px] h-[480px] rounded-2xl overflow-hidden bg-zinc-900/50 border border-white/5"
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(project)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onOpen(project);
+        }
+      }}
+      className="group relative flex-shrink-0 w-[350px] md:w-[400px] h-[480px] rounded-2xl overflow-hidden bg-zinc-900/50 border border-white/5 cursor-pointer"
     >
       <div
         className="absolute inset-0 opacity-20 transition-transform duration-700 group-hover:scale-110"
@@ -140,6 +66,7 @@ const ProjectCard = ({ project }: { project: typeof PROJECTS[0] }) => {
 
             {project.github && (
               <a
+                onClick={(event) => event.stopPropagation()}
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -151,6 +78,7 @@ const ProjectCard = ({ project }: { project: typeof PROJECTS[0] }) => {
 
             {project.demo && (
               <a
+                onClick={(event) => event.stopPropagation()}
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -169,12 +97,24 @@ const ProjectCard = ({ project }: { project: typeof PROJECTS[0] }) => {
 
 export const ProjectsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
   const x = useTransform(scrollYProgress, [0.2, 0.9], ["0%", "-70%"]);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedProject]);
 
   return (
     <section
@@ -222,13 +162,13 @@ export const ProjectsSection = () => {
             style={{ x }}
             className="flex gap-8 px-[10vw] md:px-[20vw]"
           >
-            {PROJECTS.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} />
             ))}
 
-            <div 
-            onClick={() => window.open('https://github.com/Matheus1415', '_blank')}
-            className="flex-shrink-0 w-[300px] h-[450px] rounded-2xl border border-dashed border-white/5 flex flex-col items-center justify-center gap-4 group hover:border-purple-500/30 transition-all bg-zinc-950/2 cursor-pointer">
+            <div
+              onClick={() => window.open('https://github.com/Matheus1415', '_blank')}
+              className="flex-shrink-0 w-[300px] h-[450px] rounded-2xl border border-dashed border-white/5 flex flex-col items-center justify-center gap-4 group hover:border-purple-500/30 transition-all bg-zinc-950/2 cursor-pointer">
               <div className="p-4 bg-zinc-900/50 rounded-full border border-white/5 group-hover:scale-110 transition-transform">
                 <Github className="text-zinc-600 group-hover:text-purple-400" size={24} />
               </div>
@@ -237,6 +177,142 @@ export const ProjectsSection = () => {
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4 backdrop-blur-md"
+          >
+            <motion.article
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(event) => event.stopPropagation()}
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-zinc-950 shadow-[0_0_100px_rgba(0,0,0,1)] scrollbar-hide"
+            >
+              <div
+                className="absolute inset-0 h-64 opacity-20 blur-3xl pointer-events-none"
+                style={{ background: selectedProject.bg }}
+              />
+
+              <div className="relative p-6 md:p-10 space-y-8">
+                {/* Header */}
+                <div className="flex justify-between items-start">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] tracking-[0.4em] text-zinc-500 uppercase">
+                        Case_Study_{selectedProject.id}
+                      </span>
+                      <span
+                        className="rounded-full border px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider"
+                        style={{
+                          color: selectedProject.statusColor,
+                          borderColor: `${selectedProject.statusColor}40`,
+                          backgroundColor: `${selectedProject.statusColor}10`,
+                        }}
+                      >
+                        {selectedProject.status}
+                      </span>
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">
+                      {selectedProject.title}
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="group p-2 rounded-full border border-white/10 bg-white/5 text-zinc-400 hover:text-white transition-colors"
+                  >
+                    <X size={20} className="group-hover:rotate-90 transition-transform" />
+                  </button>
+                </div>
+
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed">
+                  {selectedProject.desc}
+                </p>
+
+                {/* Grid de Detalhes Técnicos e Aprendizados */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+                    <div className="flex items-center gap-2 text-cyan-400">
+                      <Cpu size={18} />
+                      <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Engenharia</h4>
+                    </div>
+                    <ul className="space-y-3">
+                      {selectedProject.technicalDetails.map((detail, i) => (
+                        <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
+                          <span className="text-cyan-500/50 mt-1">▹</span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Learnings */}
+                  <div className="space-y-4 rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+                    <div className="flex items-center gap-2 text-purple-400">
+                      <Lightbulb size={18} />
+                      <h4 className="font-mono text-xs uppercase tracking-widest font-bold">Aprendizados</h4>
+                    </div>
+                    <ul className="space-y-3">
+                      {selectedProject.learnings.map((learning, i) => (
+                        <li key={i} className="flex gap-3 text-sm text-zinc-400 leading-snug">
+                          <span className="text-purple-500/50 mt-1">check_</span>
+                          {learning}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Stack & Actions */}
+                <div className="pt-6 border-t border-white/5 space-y-6">
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-lg bg-zinc-900 border border-white/10 text-zinc-400 font-mono text-[10px]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-bold text-black transition-all hover:bg-zinc-200"
+                      >
+                        <Github size={18} /> REPOSITÓRIO NO GITHUB
+                      </a>
+                    )}
+
+                    {selectedProject.demo && (
+                      <a
+                        href={selectedProject.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-white/10"
+                      >
+                        <ExternalLink size={18} />
+                        {selectedProject.demo.includes("figma.com") ? "PROTÓTIPO" : "VISUALIZAR PROJETO"}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
