@@ -50,7 +50,18 @@ export const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              data-hover
+              onClick={(e) => {
+                e.preventDefault();
+                const targetId = link.href.replace("#", "");
+                const elem = document.getElementById(targetId);
+
+                if (elem) {
+                  elem.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
               className="font-mono text-xs transition-colors duration-200"
               style={{ color: "hsl(0 0% 45%)" }}
               onMouseEnter={e => (e.currentTarget.style.color = "hsl(0 0% 90%)")}

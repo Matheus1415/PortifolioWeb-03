@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Github, GraduationCap, Code2, BookOpen } from "lucide-react";
+import type { MotionValue } from "framer-motion";
+import { Github, GraduationCap, Code2 } from "lucide-react";
 
 const ACADEMIC_PROJECTS = [
     {
@@ -47,10 +48,29 @@ const ACADEMIC_PROJECTS = [
         status: "INFRAESTRUTURA",
         color: "#ef4444",
         github: "https://github.com/Matheus1415/FilesSystem",
+    },
+    {
+        id: "06", 
+        title: "LedgerGuard: Database Integrity",
+        desc: "Simulação financeira de alta segurança focada em integridade transacional e auditoria. O projeto explora a implementação de regras de negócio complexas e políticas de segurança diretamente na camada de banco de dados.",
+        tech: ["PostgreSQL", "Database Design", "SQL"],
+        status: "BANCO DE DADOS",
+        color: "#10b981", 
+        github: "https://github.com/Matheus1415/LedgerGuard",
     }
 ];
 
-const AcademicCard = ({ project, index, progress, range, targetScale }: any) => {
+type AcademicProject = (typeof ACADEMIC_PROJECTS)[number];
+
+type AcademicCardProps = {
+    project: AcademicProject;
+    index: number;
+    progress: MotionValue<number>;
+    range: [number, number];
+    targetScale: number;
+};
+
+const AcademicCard = ({ project, index, progress, range, targetScale }: AcademicCardProps) => {
 
     const scale = useTransform(progress, range, [1, targetScale]);
 
@@ -100,7 +120,7 @@ const AcademicCard = ({ project, index, progress, range, targetScale }: any) => 
                                 {project.desc}
                             </p>
                             <div className="flex flex-wrap gap-2">
-                                {project.tech.map(t => (
+                                {project.tech.map((t) => (
                                     <span key={t} className="text-[10px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-500 rounded">
                                         {t}
                                     </span>
@@ -144,6 +164,7 @@ export const AcademicSection = () => {
 
             <div className="relative">
                 {ACADEMIC_PROJECTS.map((project, i) => {
+                    const progressStart = i / ACADEMIC_PROJECTS.length;
                     const targetScale = 1 - ((ACADEMIC_PROJECTS.length - i) * 0.05);
                     return (
                         <AcademicCard
@@ -151,7 +172,7 @@ export const AcademicSection = () => {
                             index={i}
                             project={project}
                             progress={scrollYProgress}
-                            range={[i * 0.25, 1]}
+                            range={[progressStart, 1]}
                             targetScale={targetScale}
                         />
                     );

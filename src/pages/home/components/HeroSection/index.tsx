@@ -42,8 +42,8 @@ const Grid3D = () => {
           backgroundSize: "50px 50px",
         }}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="absolute w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
           background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
@@ -83,7 +83,7 @@ export const HeroSection = () => {
       <Grid3D />
 
       <motion.div style={{ opacity, scale }} className="relative z-10 text-center px-6 w-full max-w-6xl mx-auto">
-        
+
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,6 +103,15 @@ export const HeroSection = () => {
           </div>
         </h1>
 
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65 }}
+          className="mb-8 font-mono tracking-[0.25em] uppercase text-zinc-400"
+        >
+          Matheus Pereira da Silva
+        </motion.h1>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -112,24 +121,6 @@ export const HeroSection = () => {
           <p className="font-mono text-sm md:text-lg leading-relaxed text-zinc-300">
             "Automatizar processos é investir no tempo. Processos podem ser automatizados, <span className="text-white font-bold italic">tempo não</span>."
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12"
-        >
-          <BorderBeamButton>Explorar Projetos →</BorderBeamButton>
-          <a
-            href="#contact"
-            className="group relative font-mono text-xs md:text-sm px-10 py-4 rounded-full overflow-hidden transition-all border border-white/10 hover:border-white/30 text-white"
-          >
-             <span className="relative z-10 flex items-center gap-2">
-               <Terminal size={14} /> Entrar em contato
-             </span>
-             <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </a>
         </motion.div>
 
         <motion.div
