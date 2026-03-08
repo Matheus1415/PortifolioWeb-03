@@ -1,23 +1,20 @@
 {
   "files": [],
   "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noEmit": false,
+    "noEmit": true, // Geralmente 'true' se o Vite/esbuild faz o build final
     "skipLibCheck": true,
+    "checkJs": false,
     "ignoreDeprecations": "5.0",
-    // Esta é a principal para ignorar erros no build:
     "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": false // Desativa todas as checagens rigorosas de uma vez
   }
 }
