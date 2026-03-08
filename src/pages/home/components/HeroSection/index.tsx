@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { ArrowDown, Terminal, Zap } from "lucide-react";
+import { ArrowDown, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const BorderBeamButton = ({ children }: { children: React.ReactNode }) => (
