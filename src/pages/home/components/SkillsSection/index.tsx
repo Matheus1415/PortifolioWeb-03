@@ -15,7 +15,7 @@ const SKILLS = [
     { icon: Code2, label: "Frontend Core", desc: "React · TS · JS · JQuery", accent: "#61DAFB" },
     { icon: Server, label: "Backend PHP", desc: "Laravel · PHP · Solid", accent: "#F05340" },
     { icon: Database, label: "Backend Node", desc: "Node.js · Express · Zod", accent: "#83CD29" },
-    { icon: Cpu, label: "Arquitetura", desc: "Engenharia · DDD · Clean Code", accent: "#A855F7" },
+    { icon: Cpu, label: "Arquitetura", desc: "Engenharia · Service Layer · Clean Code", accent: "#A855F7" },
     { icon: Binary, label: "Database", desc: "MySQL · PostgreSQL · Query Optm", accent: "#3B82F6" },
     { icon: Globe, label: "API Design", desc: "RESTful · JWT · RBAC Security", accent: "#06B6D4" },
     { icon: Cloud, label: "DevOps", desc: "Docker · CI/CD · Containers", accent: "#2496ED" },

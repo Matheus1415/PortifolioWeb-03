@@ -4,6 +4,21 @@ import { Briefcase, Calendar, ExternalLink, Terminal } from "lucide-react";
 
 const EXPERIENCES = [
     {
+        year: "2025 - 2029",
+        role: "B.S. em Engenharia de Software",
+        company: "Formação Acadêmica & Engenharia",
+        desc: "Desenvolvimento de competências em todo o ciclo de vida de software, com foco em Engenharia de Requisitos, Arquitetura de Sistemas e Padrões de Projeto (Design Patterns). Atuação prática na construção de soluções escaláveis, aplicando rigor matemático em algoritmos e garantindo a integridade de dados através de políticas de segurança (RLS) e propriedades ACID em camadas de persistência.",
+        tags: [
+            "Software Architecture",
+            "Database Design",
+            "Design Patterns",
+            "Data Structures",
+            "Requirements Engineering",
+            "Unit Testing"
+        ],
+        accent: "#0ea5e9",
+    }, ,
+    {
         year: "2025",
         role: "Desenvolvedor Júnior",
         company: "Smart Telecom",

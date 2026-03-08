@@ -75,7 +75,7 @@ const AcademicCard = ({ project, index, progress, range, targetScale }: Academic
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div className="h-screen flex items-center justify-center sticky top-0">
+        <div id="academic" className="h-screen flex items-center justify-center sticky top-0">
             <motion.div
                 style={{
                     scale,

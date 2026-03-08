@@ -177,7 +177,7 @@ export const projects = [
   },
   {
     id: "09",
-    title: "PDV (SaaS) - reelancer",
+    title: "PDV (SaaS) - freelancer",
     status: "FULLSTACK / SAAS",
     statusColor: "#0ea5e9",
     bg: "linear-gradient(135deg, #0c4a6e 0%, #020617 100%)",
